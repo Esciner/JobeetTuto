@@ -1,0 +1,57 @@
+EnsJobeetBundle_category:
+    path:  /category/{slug}/{page}
+    defaults: { _controller: EnsJobeetBundle:Category:show, page: 1 }
+    methods:  GET
+
+ens_job_homepage:
+    path:     /
+    defaults: { _controller: "EnsJobeetBundle:Job:index" }
+    methods:  GET
+
+ens_job_show:
+    path:     /{company}/{location}/{id}/{position}
+    defaults: { _controller: "EnsJobeetBundle:Job:show" }
+    methods:  GET
+    requirements:
+        id: \d+
+
+ens_job_new:
+    path:     /new
+    defaults: { _controller: "EnsJobeetBundle:Job:new" }
+    methods:  [GET, POST]
+
+ens_job_create:
+    path:     /create
+    defaults: { _controller: "EnsJobeetBundle:Job:create" }
+    methods:  [GET, POST]
+
+ens_job_edit:
+    path:     /{token}/edit
+    defaults: { _controller: "EnsJobeetBundle:Job:edit" }
+    methods:  [GET, POST]
+
+ens_job_update:
+    path:  /{token}/update
+    defaults: { _controller: "EnsJobeetBundle:Job:update" }
+    methods:  POST
+
+ens_job_delete:
+    path:     /{token}/delete
+    defaults: { _controller: "EnsJobeetBundle:Job:delete" }
+    methods:  DELETE
+
+ens_job_preview:
+    path:  /{company}/{location}/{token}/{position}
+    defaults: { _controller: "EnsJobeetBundle:Job:preview" }
+    requirements:
+        token:  \w+
+
+ens_job_publish:
+    path:  /{token}/publish
+    defaults: { _controller: "EnsJobeetBundle:Job:publish" }
+    methods:  POST
+
+ens_job_extend:
+    path:  /{token}/extend
+    defaults: { _controller: "EnsJobeetBundle:Job:extend" }
+    methods:  POST
